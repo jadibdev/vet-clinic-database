@@ -55,73 +55,40 @@ SET owner_id = 5 WHERE id = 26;
 UPDATE animals 
 SET owner_id = 5 WHERE id = 27;
 
--- What animals belong to Melody Pond?
-SELECT
-  animals.name
-FROM
-  animals
-  INNER JOIN owners ON animals.owner_id = owners.id
-WHERE
-  owners.full_name = 'Melody Pond';
 
--- List of all animals that are pokemon (their type is Pokemon).
-SELECT
-  animals.name
-FROM
-  animals
-  INNER JOIN species ON animals.species_id = species.id
-WHERE
-  species.species_name = 'Pokemon';
+INSERT INTO vets (name, age, date_of_graduation)
+VALUES
+('William Tatcher', 45, DATE '2000-04-23'),
+('Maisy Smith', 26, DATE '2019-01-17'),
+('Stephanie Mendez', 64, DATE '1981-05-04'),
+('Jack Harkness', 38, DATE '2008-06-08');
 
--- List all owners and their animals, remember to include those that don't own any animal.
-SELECT
-  owners.full_name,
-  animals.name
-FROM
-  owners
-  LEFT JOIN animals ON animals.owner_id = owners.id;
+INSERT INTO specializations (vet_id, species_id)
+VALUES
+(1, 1),
+(3, 2),
+(3, 1),
+(4,2);
 
--- How many animals are there per species?
-SELECT
-  COUNT(*) AS "No of animals",
-  species.species_name
-FROM
-  animals
-  INNER JOIN species ON animals.species_id = species.id
-GROUP BY
-  species.species_name;
-
--- List all Digimon owned by Jennifer Orwell.
-SELECT
-  animals.id,
-  animals.name,
-  species.species_name,
-  owners.full_name
-FROM
-  animals
-  INNER JOIN species ON animals.species_id = species.id
-  INNER JOIN owners ON animals.owner_id = owners.id
-WHERE
-  owners.full_name = 'Jennifer Orwell'
-  AND species.species_name = 'Digimon';
-
--- List all animals owned by Dean Winchester that haven't tried to escape.
-SELECT
-  animals.id,
-  animals.name,
-  owners.full_name
-FROM
-  animals
-  INNER JOIN owners ON animals.owner_id = owners.id
-WHERE animals.escape_attemps = 0
-AND owners.full_name = 'Dean Winchester';
-
--- Who owns the most animals?
-SELECT
-  owners.full_name,
-  COUNT(*) AS "No of animals"
-FROM
-  owners
-  LEFT JOIN animals ON owners.id = animals.owner_id
-GROUP BY
-  owners.full_name;
+INSERT INTO visits (animal_id, vet_id, date_of_visit)
+VALUES
+(1, 1, DATE '2020-05-24'),
+(1, 3, DATE '2020-07-22'),
+(2, 4, DATE '2021-02-02'),
+(3, 2, DATE '2020-01-05'),
+(3, 2, DATE '2020-03-08'),
+(3, 2, DATE '2020-05-14'),
+(4, 3, DATE '2021-05-04'),
+(5, 4, DATE '2021-02-24'),
+(6, 2, DATE '2019-12-21'),
+(6, 1, DATE '2020-08-10'),
+(6, 2, DATE '2021-04-07'),
+(7, 3, DATE '2019-09-29'),
+(8, 4, DATE '2020-10-03'),
+(8, 4, DATE '2020-11-04'),
+(9, 2, DATE '2019-01-24'),
+(9, 2, DATE '2019-05-15'),
+(9, 2, DATE '2020-02-27'),
+(9, 2, DATE '2020-08-03'),
+(10, 3, DATE '2020-05-24'),
+(10, 1, DATE '2021-01-11');
