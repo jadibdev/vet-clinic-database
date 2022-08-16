@@ -19,6 +19,10 @@ This repository includes files with plain SQL that can be used to recreate a dat
 - Twitter: [@MohamedJadib](https://twitter.com/MohamedJadib)
 - LinkedIn: [LinkedIn](https://www.linkedin.com/in/mohamed-jadib-942a5041/)
 
+👤 **whid-bb**
+
+- [LinkedIn](https://www.linkedin.com/in/kazmierczakbartosz/)
+
 ## 🤝 Contributing
 
 Contributions, issues, and feature requests are welcome!
